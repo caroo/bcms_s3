@@ -43,7 +43,7 @@ module Cms
         controller_class.alias_method_chain :try_to_stream_file, :s3
       end
       def render_page_with_caching_with_s3
-        render_page
+        render_page_with_caching_without_s3
         response.headers['Cache-Control'] = 'public, max-age=300' if Cms::S3.heroku_caching
       end
       def try_to_stream_file_with_s3
